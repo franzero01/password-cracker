@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="practiceCodeAlong:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/practiceCodeAlong_jar</output-path>
+    <root id="archive" name="practiceCodeAlong.jar">
+      <element id="module-output" name="practiceCodeAlong" />
+    </root>
+  </artifact>
+</component>

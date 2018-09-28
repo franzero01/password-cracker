@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_practicecodealong" default="compile.module.practicecodealong">
+  <dirname property="module.practicecodealong.basedir" file="${ant.file.module_practicecodealong}"/>
+  
+  <property name="module.jdk.home.practicecodealong" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.practicecodealong" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.practicecodealong" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.practicecodealong" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="practicecodealong.output.dir" value="${module.practicecodealong.basedir}/out/production/practiceCodeAlong"/>
+  <property name="practicecodealong.testoutput.dir" value="${module.practicecodealong.basedir}/out/test/practiceCodeAlong"/>
+  
+  <path id="practicecodealong.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="practicecodealong.module.production.classpath">
+    <path refid="${module.jdk.classpath.practicecodealong}"/>
+  </path>
+  
+  <path id="practicecodealong.runtime.production.module.classpath">
+    <pathelement location="${practicecodealong.output.dir}"/>
+  </path>
+  
+  <path id="practicecodealong.module.classpath">
+    <path refid="${module.jdk.classpath.practicecodealong}"/>
+    <pathelement location="${practicecodealong.output.dir}"/>
+  </path>
+  
+  <path id="practicecodealong.runtime.module.classpath">
+    <pathelement location="${practicecodealong.testoutput.dir}"/>
+    <pathelement location="${practicecodealong.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.practicecodealong">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.practicecodealong">
+    <patternset refid="excluded.from.module.practicecodealong"/>
+  </patternset>
+  
+  <path id="practicecodealong.module.sourcepath">
+    <dirset dir="${module.practicecodealong.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.practicecodealong" depends="compile.module.practicecodealong.production,compile.module.practicecodealong.tests" description="Compile module practiceCodeAlong"/>
+  
+  <target name="compile.module.practicecodealong.production" depends="register.custom.compilers" description="Compile module practiceCodeAlong; production classes">
+    <mkdir dir="${practicecodealong.output.dir}"/>
+    <javac2 destdir="${practicecodealong.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.practicecodealong}/javac">
+      <compilerarg line="${compiler.args.practicecodealong}"/>
+      <bootclasspath refid="practicecodealong.module.bootclasspath"/>
+      <classpath refid="practicecodealong.module.production.classpath"/>
+      <src refid="practicecodealong.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.practicecodealong"/>
+    </javac2>
+    
+    <copy todir="${practicecodealong.output.dir}">
+      <fileset dir="${module.practicecodealong.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.practicecodealong.tests" depends="register.custom.compilers,compile.module.practicecodealong.production" description="compile module practiceCodeAlong; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.practicecodealong" description="cleanup module">
+    <delete dir="${practicecodealong.output.dir}"/>
+    <delete dir="${practicecodealong.testoutput.dir}"/>
+  </target>
+</project>
