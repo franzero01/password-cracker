@@ -27,7 +27,7 @@ public class ultra {
         int[] charNumbers = new int[password.length()];
         charNumbers[0] = 97;
         cracker.setLength(password.length());
-        int attemptCounter = 0;
+        double attemptCounter = 0;
         long tStart = System.currentTimeMillis();
         long tEnd;
 
@@ -59,8 +59,8 @@ public class ultra {
             }
             attemptCounter++;
 
-            /*System.out.println(attemptCounter);
-            System.out.println(cracker.toString());*/
+            System.out.println(attemptCounter);
+            System.out.println(cracker.toString());
         }
         System.out.println(cracker.toString());
         tEnd = System.currentTimeMillis();
