@@ -25,7 +25,7 @@ public class ultra {
     public void crackPassword(){
         StringBuilder cracker = new StringBuilder();
         int[] charNumbers = new int[password.length()];
-        charNumbers[0] = 97;
+        charNumbers[0] = 33;
         cracker.setLength(password.length());
         long attemptCounter = 0;
         long tStart = System.currentTimeMillis();
@@ -44,7 +44,7 @@ public class ultra {
             cracker.setCharAt(0, (char) charNumbers[0]);
 
             if ((attemptCounter % 100000000) == 0){
-                System.out.println("Workinng....\n" + attemptCounter);
+                System.out.println("Workinng....\n" + attemptCounter + " attempts");
             }
 
             for (int x = 0; x < password.length(); x++){ //reset letter counter and advance the next letter.
@@ -60,7 +60,7 @@ public class ultra {
             attemptCounter++;
 
             //System.out.println(attemptCounter);
-            //System.out.println(cracker.toString());
+            System.out.println(cracker.toString());
         }
         System.out.println(cracker.toString());
         tEnd = System.currentTimeMillis();
