@@ -43,7 +43,7 @@ public class ultra {
             charNumbers[0]++;
 
             if ((attemptCounter % 100000000) == 0){
-                System.out.println("Workinng....\n" + attemptCounter + " attempts");
+                System.out.println("Workinng...." + String.format("%,8d", attemptCounter) + " attempts");
             }
 
             for (int x = 0; x < password.length(); x++){ //reset letter counter and advance the next letter.
@@ -60,7 +60,7 @@ public class ultra {
             attemptCounter++;
 
             //System.out.println(attemptCounter);
-            System.out.println(cracker.toString());
+            //System.out.println(cracker.toString());
         }
         System.out.println(cracker.toString());
         printresults();
