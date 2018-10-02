@@ -3,6 +3,7 @@
  */
 public class aLaFuerza {
     public static void main(String[] args) {
+    	
         ultra a = new ultra("deguo");
         a.crackPassword();
     }
