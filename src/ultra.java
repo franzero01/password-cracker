@@ -60,11 +60,11 @@ public class ultra {
             attemptCounter++;
 
             //System.out.println(attemptCounter);
-            System.out.println(cracker.toString());
+            //System.out.println(cracker.toString());
         }
         System.out.println(cracker.toString());
         tEnd = System.currentTimeMillis();
-        System.out.println((tEnd - tStart) / 1000.0);
-        System.out.println(attemptCounter);
+        System.out.println((tEnd - tStart) / 1000.0 + " secounds to break");
+        System.out.println(attemptCounter + " attempts made");
     }
 }
