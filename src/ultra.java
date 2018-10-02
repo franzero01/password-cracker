@@ -5,6 +5,9 @@ public class ultra {
     //variables
     private String password;
     private String atttempt;
+    long attemptCounter = 0;
+    long tStart = System.currentTimeMillis();
+    long tEnd;
 
     //constructor
     public ultra(){}
@@ -27,10 +30,7 @@ public class ultra {
         int[] charNumbers = new int[password.length()];
         charNumbers[0] = 33;
         cracker.setLength(password.length());
-        long attemptCounter = 0;
-        long tStart = System.currentTimeMillis();
-        long tEnd;
-
+        
         for (int y = 0; y < charNumbers.length; y++){
             charNumbers[y] = 97;
         }
@@ -63,7 +63,12 @@ public class ultra {
             //System.out.println(cracker.toString());
         }
         System.out.println(cracker.toString());
-        tEnd = System.currentTimeMillis();
+        printresults();
+        
+    }
+    
+    public void printresults() {
+    	tEnd = System.currentTimeMillis();
         System.out.println((tEnd - tStart) / 1000.0 + " secounds to break");
         System.out.println(attemptCounter + " attempts made");
     }
