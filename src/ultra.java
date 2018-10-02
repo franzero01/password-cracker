@@ -3,6 +3,7 @@
  */
 public class ultra {
     //variables
+	threadMaster thread = new threadMaster();
     private String password;
     private String atttempt;
     long attemptCounter = 0;
@@ -10,7 +11,6 @@ public class ultra {
     long tEnd;
 
     //constructor
-    public ultra(){}
     public ultra(String userPassword){
         setPassword(userPassword);
     }
@@ -39,7 +39,7 @@ public class ultra {
 
             if (cracker.toString().equals(password)) { //stop program if password is found
                 break;
-            }
+            }	
             charNumbers[0]++;
             cracker.setCharAt(0, (char) charNumbers[0]);
 
@@ -48,14 +48,15 @@ public class ultra {
             }
 
             for (int x = 0; x < password.length(); x++){ //reset letter counter and advance the next letter.
-                if (charNumbers[x] == 127){
+            	thread.run(x, charNumbers, password, cracker);
+                /*if (charNumbers[x] == 127){
                     charNumbers[x] = 33;
                     if (x != password.length() - 1){
                         charNumbers[x + 1] += 1;
                         cracker.setCharAt((x + 1), (char) charNumbers[x + 1]);
                     }
                     cracker.setCharAt(x, (char) charNumbers[x] );
-                }
+                }*/
             }
             attemptCounter++;
 
