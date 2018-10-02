@@ -9,7 +9,7 @@ public class threadMaster extends Thread {
                     cracker.setCharAt((x + 1), (char) charNumbers[x + 1]);
                 }
                 cracker.setCharAt(x, (char) charNumbers[x] );
-            }
+			}
 		} catch (Exception e) {
 			System.out.println("There was a problem");
 			e.printStackTrace();

@@ -28,11 +28,10 @@ public class ultra {
     public void crackPassword(){
         StringBuilder cracker = new StringBuilder();
         int[] charNumbers = new int[password.length()];
-        charNumbers[0] = 33;
         cracker.setLength(password.length());
         
         for (int y = 0; y < charNumbers.length; y++){
-            charNumbers[y] = 97;
+            charNumbers[y] = 32;
         }
 
         while (!cracker.toString().equals(password)) {
@@ -40,8 +39,8 @@ public class ultra {
             if (cracker.toString().equals(password)) { //stop program if password is found
                 break;
             }	
-            charNumbers[0]++;
             cracker.setCharAt(0, (char) charNumbers[0]);
+            charNumbers[0]++;
 
             if ((attemptCounter % 100000000) == 0){
                 System.out.println("Workinng....\n" + attemptCounter + " attempts");
@@ -61,7 +60,7 @@ public class ultra {
             attemptCounter++;
 
             //System.out.println(attemptCounter);
-            //System.out.println(cracker.toString());
+            System.out.println(cracker.toString());
         }
         System.out.println(cracker.toString());
         printresults();
