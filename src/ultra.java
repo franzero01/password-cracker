@@ -1,9 +1,8 @@
 /**
  * Created by frank on 1/27/2017.
  */
-public class ultra {
+public class ultra extends Thread {
     //variables
-	threadMaster thread = new threadMaster();
     private String password;
     private String atttempt;
     long attemptCounter = 0;
@@ -42,12 +41,14 @@ public class ultra {
             cracker.setCharAt(0, (char) charNumbers[0]);
             charNumbers[0]++;
 
-            if ((attemptCounter % 100000000) == 0){
-                System.out.println("Workinng...." + String.format("%,8d", attemptCounter) + " attempts");
-            }
+            //if ((attemptCounter % 500000000) == 0){
+              //  System.out.println("Working...." + String.format("%,8d", attemptCounter) + " attempts. " + ((System.currentTimeMillis() - tStart) / 1000.0) + " secounds passed.");
+            //}
 
             for (int x = 0; x < password.length(); x++){ //reset letter counter and advance the next letter.
-            	thread.run(x, charNumbers, password, cracker);
+            	threadMaster thread = new threadMaster();
+            	thread.start();	
+            	//thread.run(x, charNumbers, password, cracker);
                 /*if (charNumbers[x] == 127){
                     charNumbers[x] = 33;
                     if (x != password.length() - 1){
