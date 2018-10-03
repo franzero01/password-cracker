@@ -1,7 +1,7 @@
 /**
  * Created by frank on 1/27/2017.
  */
-public class ultra extends Thread {
+public class ultra {
     //variables
     private String password;
     private String atttempt;
@@ -41,15 +41,20 @@ public class ultra extends Thread {
             cracker.setCharAt(0, (char) charNumbers[0]);
             charNumbers[0]++;
 
-            //if ((attemptCounter % 500000000) == 0){
-              //  System.out.println("Working...." + String.format("%,8d", attemptCounter) + " attempts. " + ((System.currentTimeMillis() - tStart) / 1000.0) + " secounds passed.");
-            //}
-
-            for (int x = 0; x < password.length(); x++){ //reset letter counter and advance the next letter.
-            	threadMaster thread = new threadMaster();
-            	thread.start();	
+            if ((attemptCounter % 500000000) == 0){
+                System.out.println("Working...." + String.format("%,8d", attemptCounter) + " attempts. " + ((System.currentTimeMillis() - tStart) / 1000.0) + " secounds passed.");
+            }         
+        	
+        	for (int x = 0; x < password.length(); x++){ //reset letter counter and advance the next letter.
+        		threadMaster thread = new threadMaster();
+                thread.cracker = cracker;
+                thread.charNumbers = charNumbers;
+                thread.password = password;
+                thread.x = x;
+            	thread.start();
+            	
             	//thread.run(x, charNumbers, password, cracker);
-                /*if (charNumbers[x] == 127){
+                /*if (charNumbers[x] >= 127){
                     charNumbers[x] = 33;
                     if (x != password.length() - 1){
                         charNumbers[x + 1] += 1;
@@ -57,11 +62,12 @@ public class ultra extends Thread {
                     }
                     cracker.setCharAt(x, (char) charNumbers[x] );
                 }*/
-            }
+            }                
+                     
             attemptCounter++;
 
             //System.out.println(attemptCounter);
-            //System.out.println(cracker.toString());
+            System.out.println(cracker.toString());
         }
         System.out.println(cracker.toString());
         printresults();
